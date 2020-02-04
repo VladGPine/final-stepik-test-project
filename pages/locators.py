@@ -8,3 +8,8 @@ class MainPageLocators:
 class LoginPageLocators:
     LOGIN_FORM = (By.CSS_SELECTOR, '#login_form')
     REGISTER_FORM = (By.CSS_SELECTOR, '#register_form')
+
+
+class ProductPageLocators:
+    PRODUCT = 'the-shellcoders-handbook_209'
+    ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, 'button[type="submit"].btn-add-to-basket')
