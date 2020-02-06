@@ -11,7 +11,6 @@ class LoginPageLocators:
 
 
 class ProductPageLocators:
-    PRODUCT_PATH = 'the-shellcoders-handbook_209'
     PRODUCT_NAME = (By.CSS_SELECTOR, '.product_main > h1')
     ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, 'button[type="submit"].btn-add-to-basket')
     PRODUCT_PRICE = (By.CSS_SELECTOR, '.product_main > .price_color')
