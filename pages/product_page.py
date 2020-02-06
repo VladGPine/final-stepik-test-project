@@ -44,8 +44,10 @@ class ProductPage(BasePage):
         return product_price_in_basket.text
 
     @staticmethod
-    def should_be_product_price_equal_in_basket_product_price(
-            product_price,
-            product_price_in_basket):
+    def should_be_product_price_equal_in_basket_product_price(product_price, product_price_in_basket):
         assert product_price in product_price_in_basket, \
             'prices not equal'
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_ADDING_MESSAGE), \
+            'adding product message is presented, but should not'
