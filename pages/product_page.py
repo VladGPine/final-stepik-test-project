@@ -7,6 +7,14 @@ class ProductPage(BasePage):
         self.should_be_add_to_basket_button()
         add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         add_to_basket_button.click()
+        self.should_be_message_about_adding_product_to_basket()
+        self.should_be_product_name_in_adding_product_to_basket_message_equal_product_name(
+            self.return_product_name(),
+            self.return_message_about_adding_product_to_basket())
+        self.should_be_message_about_price_adding_product_to_basket()
+        self.should_be_product_price_equal_in_basket_product_price(
+            self.return_product_price(),
+            self.return_product_price_in_basket())
 
     def should_be_add_to_basket_button(self):
         assert self.is_element_present(*ProductPageLocators.ADD_TO_BASKET_BUTTON), \

@@ -5,33 +5,12 @@ from pages.login_page import LoginPage
 import time
 
 
-@pytest.mark.parametrize(
-    'link',
-    ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
-     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
-     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
-     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer3",
-     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer4",
-     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer5",
-     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer6",
-     pytest.param("http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer7",
-                  marks=pytest.mark.xfail(reason='This promo link failed')),
-     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
-     "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
 @pytest.mark.need_review
-def test_guest_can_add_product_to_basket(browser, link):
+def test_guest_can_add_product_to_basket(browser):
+    link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
     page = ProductPage(browser, link)
     page.open()
     page.adding_to_basket()
-    page.solve_quiz_and_get_code()
-    page.should_be_message_about_adding_product_to_basket()
-    page.should_be_product_name_in_adding_product_to_basket_message_equal_product_name(
-        page.return_product_name(),
-        page.return_message_about_adding_product_to_basket())
-    page.should_be_message_about_price_adding_product_to_basket()
-    page.should_be_product_price_equal_in_basket_product_price(
-        page.return_product_price(),
-        page.return_product_price_in_basket())
 
 
 @pytest.mark.xfail(reason='User does not see the success message about adding product to basket')
@@ -107,11 +86,3 @@ class TestUserAddToBasketFromProductPage:
         page = ProductPage(browser, link)
         page.open()
         page.adding_to_basket()
-        page.should_be_message_about_adding_product_to_basket()
-        page.should_be_product_name_in_adding_product_to_basket_message_equal_product_name(
-            page.return_product_name(),
-            page.return_message_about_adding_product_to_basket())
-        page.should_be_message_about_price_adding_product_to_basket()
-        page.should_be_product_price_equal_in_basket_product_price(
-            page.return_product_price(),
-            page.return_product_price_in_basket())
